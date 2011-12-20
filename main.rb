@@ -94,7 +94,7 @@ p I enjoy building websites that are simple, but brilliant ... like this one!
 
 p I also like Water Polo, Mathematics and Beer, although not necessarily at the same time!
 
-p Thanks for visiting, have a nice day!
+p Thanks for visiting. Have a nice day!
 
 h2 Tweet Me
 p
