@@ -88,16 +88,17 @@ h1 title='Traditional Mancunian Greeting' Ey Up!
 
 p  Welcome to my website!
 
-p My name is DAZ and I was born and bred in Manchester, UK.
+p My name is DAZ and I was born and bred in Manchester,UK.
 
 p I enjoy building websites that are simple, but brilliant ... like this one!
 
-p I also like Maths, Water Polo and Beer, although not always at the same time!
+p I also like Water Polo, Mathematics and Beer, although not necessarily at the same time!
 
 p Thanks for visiting, have a nice day!
 
+h2 Tweet Me
 p
-  a.twitter title="Follow Me" href="http://twitter.com/#!/daz4126" @daz4126
+  a.twitter title="Tweet Me" href="http://twitter.com/#!/daz4126" @daz4126
 
 @@about
 p I love sport - swimming, basketball and especially water polo. I'm a geek at heart and love Maths, programming and web stuff.
@@ -106,9 +107,9 @@ p I love sport - swimming, basketball and especially water polo. I'm a geek at h
 h2 Web Design
 p I built this website so that I could write about all that stuff and show off some of my work. I love to build websites that are simple, yet brilliant at the same time. I am a big believer in Open Source. I write about Sinatra web development at <a href='http://rubysource.com'>Ruby Source</a> and <a href='http://ididitmyway.heroku.com'>I Did It My Way</a>.
 
-@@quote
-#quote
-  .container
+@@strapline
+#strapline
+  .quote
     blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We Do Things Differently Here
     cite Anthony H Wilson
 
@@ -137,7 +138,7 @@ html
         h1
           a title="Home Sweet Home" href="/" = settings.name
         h2 Made in Manchester
-    == slim :quote
+    == slim :strapline
     #content role='main'
       .container
         - settings.flash.each do |key|
@@ -271,11 +272,12 @@ header{
   }
 }
 
-#quote{
+#strapline{
+  .quote{@extend .container;}
   background: $green;
   border-bottom: $thickness solid $border;
 
-  blockquote{@include headings;font-size:2.2em;}
+  blockquote{@include headings;font-size:2.2em;text-align:center;}
   
   cite{
         color:$white;
@@ -294,6 +296,7 @@ header{
   border-bottom: $thickness solid $border;
   h1{font-size:4.8em;}
   h2{font-size:3.4em;}
+  p{max-width:36em;}
 }
 
 footer{
