@@ -94,11 +94,10 @@ p I enjoy building websites that are simple, but brilliant ... like this one!
 
 p I also like Water Polo, Mathematics and Beer, although not necessarily at the same time!
 
-p Thanks for visiting. Have a nice day!
+p Thanks for visiting. 
 
-h2 Tweet Me
-p
-  a.twitter title="Tweet Me" href="http://twitter.com/#!/daz4126" @daz4126
+h1 title="Traditional Mancunian Farewell" Laters!
+
 
 @@about
 p I love sport - swimming, basketball and especially water polo. I'm a geek at heart and love Maths, programming and web stuff.
@@ -108,8 +107,8 @@ h2 Web Design
 p I built this website so that I could write about all that stuff and show off some of my work. I love to build websites that are simple, yet brilliant at the same time. I am a big believer in Open Source. I write about Sinatra web development at <a href='http://rubysource.com'>Ruby Source</a> and <a href='http://ididitmyway.heroku.com'>I Did It My Way</a>.
 
 @@strapline
-#strapline
-  .quote
+#quote
+  .container
     blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We Do Things Differently Here
     cite Anthony H Wilson
 
@@ -145,6 +144,11 @@ html
           - if flash[key]
             div class="alert-message #{key}" == flash[key]
         == yield
+    #contact
+      .container
+        h2 Tweet Me
+        p
+          a.twitter title="Tweet Me" href="http://twitter.com/#!/daz4126" @daz4126
     footer role="contentinfo"
       small 
         p &copy; Copyright #{settings.author} #{Time.now.year==2011 ? '2011': '2011-'+Time.now.year.to_s}
@@ -235,14 +239,17 @@ body{
   border: $thickness solid $border;
 }
 
-  p,li{
-  color:$text;
-  font-size:1.4em;
-  line-height:1.1;
-  margin: 0.4em 0 0.8em;
-  font-weight: bold;
-  text-shadow: 1px 1px 0 rgba($white,0.3);
-  }
+p,li{
+color:$text;
+font-size:1.4em;
+line-height:1.1;
+margin: 0.4em 0 0.8em;
+font-weight: bold;
+text-shadow: 1px 1px 0 rgba($white,0.3);
+}
+
+h1{font-size:4.8em;}
+h2{font-size:3.4em;}
 
 header{
     background: $red;
@@ -272,35 +279,34 @@ header{
   }
 }
 
-#strapline{
-  .quote{@extend .container;}
-  background: $green;
+#quote{
+  background: $orange;
   border-bottom: $thickness solid $border;
 
-  blockquote{@include headings;font-size:2.2em;text-align:center;}
+  blockquote{@include headings;font-size:2.6em;text-align:left;}
   
   cite{
-        color:$white;
-        text-align:right;
-        width:100%;
-        padding:0;margin:0;
-        display:block;
-        font-style: italic;
-        text-shadow: 1px 1px 0 rgba($white,0.3);
-        font-size:1.3em;
-} 
+      color:$white;
+      padding:0;margin:0;
+      border-top: $white dashed 1px;
+      font-style: italic;
+      font-size:1.3em;
+  } 
 }
 
 #content{
   background:$grey;
   border-bottom: $thickness solid $border;
-  h1{font-size:4.8em;}
-  h2{font-size:3.4em;}
   p{max-width:36em;}
 }
 
+#contact{
+  background:$blue;
+  border-bottom: $thickness solid $border;
+}
+
 footer{
-  background: $blue;
+  background:$green;
   small{@extend .container;font-size:0.9em;display:block;}
   p{color: $white;}
 }
