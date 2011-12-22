@@ -32,6 +32,7 @@ end
 before do
   @javascripts = []
   @fonts = []
+  @before = 'quote'
 end
 
 after do
@@ -84,20 +85,17 @@ __END__
 ########### Views ###########
 
 @@index
-h1 title='Traditional Mancunian Greeting' Ey Up!
+h1 title='Traditional Mancunian Greeting' Alright Are Kid?
 
 p  Welcome to my website!
 
-p My name is DAZ and I was born and bred in Manchester,UK.
+p My name is DAZ and I work, rest and play in Manchester,UK.
 
 p I enjoy building websites that are simple, but brilliant ... like this one!
 
-p I also like Water Polo, Mathematics and Beer, although not necessarily at the same time!
+p I also like playing Water Polo, doing Maths and drinking Beer, although not necessarily all at the same time!
 
-p Thanks for visiting. 
-
-h1 title="Traditional Mancunian Farewell" Laters!
-
+p Thanks for visiting. Have a nice day!
 
 @@about
 p I love sport - swimming, basketball and especially water polo. I'm a geek at heart and love Maths, programming and web stuff.
@@ -106,17 +104,22 @@ p I love sport - swimming, basketball and especially water polo. I'm a geek at h
 h2 Web Design
 p I built this website so that I could write about all that stuff and show off some of my work. I love to build websites that are simple, yet brilliant at the same time. I am a big believer in Open Source. I write about Sinatra web development at <a href='http://rubysource.com'>Ruby Source</a> and <a href='http://ididitmyway.heroku.com'>I Did It My Way</a>.
 
-@@strapline
+@@quote
 #quote
   .container
-    blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We Do Things Differently Here
-    cite Anthony H Wilson
+    == slim ('quote'+(rand(3)+1).to_s).to_sym
+
+@@quote1
+blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We Do Things Differently Here
+cite Anthony H Wilson
 
 @@quote2
-#quote
-  .container
-    blockquote rel="http://shop.visitmanchester.com/store/product/2265/Quote-magnet---dark-blue/" They return the love around here, don't they
-    cite Guy Garvey
+blockquote rel="http://shop.visitmanchester.com/store/product/2265/Quote-magnet---dark-blue/" They return the love around here, don't they
+cite Guy Garvey
+
+@@quote3
+blockquote rel="http://shop.visitmanchester.com/store/product/2265/Quote-magnet---dark-blue/" It All Comes from Here
+cite Noel Gallagher
 
 @@layout
 doctype html
@@ -137,22 +140,21 @@ html
         h1
           a title="Home Sweet Home" href="/" = settings.name
         h2 Made in Manchester
-    == slim :strapline
-    #content role='main'
-      .container
+    == slim @before.to_sym
+    #main role='main'
+      .content
         - settings.flash.each do |key|
           - if flash[key]
             div class="alert-message #{key}" == flash[key]
         == yield
-    #contact
-      .container
-        h2 Tweet Me
+    footer role="contentinfo"
+      #contact
+        h2 Contact
         p
           a.twitter title="Tweet Me" href="http://twitter.com/#!/daz4126" @daz4126
-    footer role="contentinfo"
       small 
         p &copy; Copyright #{settings.author} #{Time.now.year==2011 ? '2011': '2011-'+Time.now.year.to_s}
-        p This site has been lovingly built using <a href="http://xubuntu.org">Xubuntu</a>, <a href="http://ruby-lang.org/en/">Ruby</a>, <a href="http://sinatrarb.com">Sinatra</a> &amp; <a href="http://inkscape.org/">Inkscape</a>. Hosting is provided by <a href="http://heroku.com">Heroku</a>
+        p This site has been built using <a href="http://xubuntu.org">Xubuntu</a>, <a href="http://ruby-lang.org/en/">Ruby</a>, <a href="http://sinatrarb.com">Sinatra</a> &amp; <a href="http://inkscape.org/">Inkscape</a>. Hosting is provided by <a href="http://heroku.com">Heroku</a>. Sorted.
       javascript:
         var _gaq=[["_setAccount","#{ settings.analytics }"],["_trackPageview"]];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=g.src="//www.google-analytics.com/ga.js";s.parentNode.insertBefore(g,s)}(document,"script"))
 
@@ -211,6 +213,9 @@ $width: 61.80%;
 
 h1,h2,h3,h4,h5,h6{@include headings;}
 
+h1{font-size:4em;}
+h2{font-size:3em;}
+h3{font-size:3em;}
 
 a,a:link,a:visited{
   text-decoration: underline;
@@ -247,9 +252,6 @@ margin: 0.4em 0 0.8em;
 font-weight: bold;
 text-shadow: 1px 1px 0 rgba($white,0.3);
 }
-
-h1{font-size:4.8em;}
-h2{font-size:3.4em;}
 
 header{
     background: $red;
@@ -294,19 +296,16 @@ header{
   } 
 }
 
-#content{
+#main{
+  .content{@extend .container;}
   background:$grey;
   border-bottom: $thickness solid $border;
   p{max-width:36em;}
 }
 
-#contact{
-  background:$blue;
-  border-bottom: $thickness solid $border;
-}
-
 footer{
-  background:$green;
+  background:$blue;
+  #contact{@extend .container;}
   small{@extend .container;font-size:0.9em;display:block;}
   p{color: $white;}
 }
