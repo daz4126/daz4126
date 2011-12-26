@@ -172,68 +172,17 @@ alert 'Coffeescript is working!'
 @@styles
 @import "reset";
 @import "colours";
+@import "mixins";
 
-// fonts
+// variables
+
 $normalfont: "Courier New", "Nimbus Mono L", Monospace;
 $headingfont: "Liberation Sans",Helvetica ,Arial, "Nimbus Sans L", FreeSans, Sans-serif;
 $basefontsize: 13px;
 $thickness:8px;
 $width: 61.80%;
 
-@mixin clearfix{_height: 1%;*min-height:1px;zoom:1;
-&:after{content:".";display:block;height:0;clear:both;visibility:hidden;}}
-
-@mixin zero{
-  margin: 0;
-  padding: 0;
-}
-
-@mixin grid{
-  @include clearfix;
-}
-
-@mixin col($width:1,$total:12,$padding:0,$margin:0,$left:0,$right:0){
-  float:left;
-  margin-left:$margin*1%;
-  padding:10px $padding*1%;
-  width: $width*100%/$total;
-  margin-left:$left*100%/$total;
-  margin-right:$right*100%/$total;
-}
-
-@mixin headings{
-    color:$white;
-    font-weight:bold;
-    font-family: $headingfont;
-    text-transform: uppercase;
-    letter-spacing:0.06em;
-    line-height:0.8;
-    margin: 0 0 0.2em;
-}
-
-h1,h2,h3,h4,h5,h6{@include headings;}
-
-h1{font-size:4em;}
-h2{font-size:3em;}
-h3{font-size:3em;}
-
-a,a:link,a:visited{
-  text-decoration: underline;
-  color:$red;
-}
-a:hover{
-  background: $red;
-  color:$white;
-  text-shadow: none;
-}
-
-.container{max-width:960px;width:$width;margin:0 auto;padding:20px;}
-
-@media screen and (max-width: 600px) {
-  .container {
-    width: auto;
-  }
-}
+// basic elements
 
 html{
   background:$grey;
@@ -250,12 +199,41 @@ font-size:1.4em;
 line-height:1.1;
 margin: 0.4em 0 0.8em;
 font-weight: bold;
-text-shadow: 1px 1px 0 rgba($white,0.3);
 }
+
+h1,h2,h3,h4,h5,h6{@include headings;}
+
+h1{font-size:4em;}
+h2{font-size:3em;}
+h3{font-size:3em;}
+
+a,a:link,a:visited{
+  text-decoration: underline;
+  text-shadow: none;
+  color:$yellow;
+}
+a:hover{
+  background: $yellow;
+  color:$blue;
+}
+
+.container{max-width:960px;width:$width;margin:0 auto;}
+
+//responsive layout
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: auto;
+  }
+}
+
+
+//sections
 
 header{
     background: $red;
-    border-bottom: $thickness solid $border;  
+    border-bottom: $thickness solid $border;
+    padding:20px;
   hgroup{
     @extend .container;
   h1{
@@ -284,7 +262,7 @@ header{
 #quote{
   background: $orange;
   border-bottom: $thickness solid $border;
-
+  padding:20px;
   blockquote{@include headings;font-size:2.6em;text-align:left;}
   
   cite{
@@ -300,11 +278,13 @@ header{
   .content{@extend .container;}
   background:$grey;
   border-bottom: $thickness solid $border;
-  p{max-width:36em;}
+  padding:20px;
+  p{max-width:36em;text-shadow: 1px 1px 0 rgba($white,0.3);}
 }
 
 footer{
   background:$blue;
+  padding:20px;
   #contact{@extend .container;}
   small{@extend .container;font-size:0.9em;display:block;}
   p{color: $white;}
