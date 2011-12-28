@@ -93,7 +93,7 @@ p My name is DAZ and I work, rest and play in Manchester,UK.
 
 p I enjoy building websites that are simple, but brilliant ... like this one!
 
-p I also like playing Water Polo, doing Maths and drinking Beer, although not necessarily all at the same time!
+p I also like water polo, maths and beer, although not necessarily all at the same time!
 
 p Thanks for visiting. Have a nice day!
 
@@ -203,9 +203,9 @@ font-weight: bold;
 
 h1,h2,h3,h4,h5,h6{@include headings;}
 
-h1{font-size:4em;}
-h2{font-size:3em;}
-h3{font-size:3em;}
+h1{font-size:3.2em;}
+h2{font-size:2.6em;}
+h3{font-size:2em;}
 
 a,a:link,a:visited{
   text-decoration: underline;
