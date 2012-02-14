@@ -12,13 +12,13 @@ configure do
   set :views, -> { root }
 
   set :javascripts, %w[ ]
-  set :fonts, %w[ ]
+  set :fonts, %w[ Abel ]
 
   set :markdown, :layout_engine => :slim
 
   set :flash, %w[notice error warning alert info]
   enable :sessions
-  use Rack::Flash
+  #use Rack::Flash
 end
 
 ########### Helpers ###########
@@ -32,7 +32,6 @@ end
 before do
   @javascripts = []
   @fonts = []
-  @before = 'quote'
 end
 
 after do
@@ -48,6 +47,7 @@ get('/application.js') { coffee :script }
 # home page
 get '/' do
   @title = "DAZ, Made in Manchester"
+  @before = :quote
   slim :index
 end
 
@@ -57,26 +57,27 @@ get '/success' do
 end
 
 get '/:page' do
+  raise error(404) unless File.exists?(params[:page]+'.md')
   markdown params[:page].to_sym
 end
 
 post '/' do
     require 'pony'
     Pony.mail(
-      from: 'Dazzl',
+      from: params[:name] + "<" + params[:email] + ">",
       to: 'daz4126@gmail.com',
-      subject: "A message from the website",
+      subject: "A message from the DAZ4126 website",
       body: params[:message],
       port: '587',
       via: :smtp,
       via_options: { 
-        address: 'smtp.gmail.com', 
-        port: '587', 
-        enable_starttls_auto: true, 
-        user_name: 'daz4126', 
-        password: 'senior6DJ!', 
-        authentication: :plain, 
-        domain: 'localhost.localdomain'
+        :address              => 'smtp.sendgrid.net', 
+        :port                 => '587', 
+        :enable_starttls_auto => true, 
+        :user_name            => ENV['SENDGRID_USERNAME'], 
+        :password             => ENV['SENDGRID_PASSWORD'], 
+        :authentication       => :plain, 
+        :domain               => 'heroku.com'
       })
     redirect '/success' 
 end
@@ -85,17 +86,19 @@ __END__
 ########### Views ###########
 
 @@index
-h1 title='Traditional Mancunian Greeting' Alright Our Kid?
+h1 title='Traditional Mancunian Greeting' Alright Mate!
 
 p  Welcome to my website!
 
 p My name is DAZ and I work, rest and play in Manchester,UK.
 
-p I enjoy building websites that are simple, but brilliant ... like this one!
+p I enjoy building websites that are simple, but brilliant.
 
-p I also like water polo, maths and burgers, although not necessarily all at the same time!
+p I also like water polo, maths and burgers.
 
 p Thanks for visiting. Have a nice day!
+
+== slim :contact
 
 @@about
 p I love sport - swimming, basketball and especially water polo. I'm a geek at heart and love Maths, programming and web stuff.
@@ -121,6 +124,21 @@ cite Guy Garvey
 blockquote rel="http://shop.visitmanchester.com/store/product/2265/Quote-magnet---dark-blue/" It All Comes from Here
 cite Noel Gallagher
 
+@@contact
+#contact
+  h2 Contact Me
+  form action='contact' method='post'
+    label for='name' Name:
+    input type='text' name='name'
+    label for='email' Email:
+    input type='text' name='email'
+    label for='message' Message:
+    textarea rows='12' cols='40' name='message'
+    input#send.button type='submit' value='Send'
+  h2 Tweet Me 
+  p
+    a.twitter title="Tweet Me" href="http://twitter.com/#!/daz4126" @daz4126
+
 @@layout
 doctype html
 html
@@ -140,18 +158,12 @@ html
         h1
           a title="Home Sweet Home" href="/" = settings.name
         h2 Made in Manchester
-    == slim @before.to_sym
+    == slim @before.to_sym if @before
     #main role='main'
       .content
-        - settings.flash.each do |key|
-          - if flash[key]
-            div class="alert-message #{key}" == flash[key]
         == yield
+    == slim @after.to_sym if @after
     footer role="contentinfo"
-      #contact
-        h2 Contact
-        p
-          a.twitter title="Tweet Me" href="http://twitter.com/#!/daz4126" @daz4126
       small 
         p &copy; Copyleft #{settings.author} #{Time.now.year==2011 ? '2011': '2011-'+Time.now.year.to_s}
         p This site has been built using <a href="http://xubuntu.org">Xubuntu</a>, <a href="http://ruby-lang.org/en/">Ruby</a>, <a href="http://sinatrarb.com">Sinatra</a> &amp; <a href="http://inkscape.org/">Inkscape</a>. Hosting is provided by <a href="http://heroku.com">Heroku</a>.
@@ -177,20 +189,24 @@ alert 'Coffeescript is working!'
 // variables
 
 $normalfont: "Courier New", "Nimbus Mono L", Monospace;
-$headingfont: "Liberation Sans",Helvetica ,Arial, "Nimbus Sans L", FreeSans, Sans-serif;
+$headingfont: Abel,"Liberation Sans",Helvetica ,Arial, "Nimbus Sans L", FreeSans, Sans-serif;
 $basefontsize: 13px;
 $thickness:8px;
-$width: 61.80%;
+$width: 90%;
 
 // basic elements
 
 html{
-  background:$grey;
+  background:$brown;
 }
 
 body{
   font-family:$normalfont;font-size:$basefontsize;
   border: $thickness solid $border;
+  width: 90%;
+  max-width: 840px;
+  margin: 10px auto;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.1),-5px 5px 5px rgba(0,0,0,0.1);
 }
 
 p,li{
@@ -201,26 +217,15 @@ margin: 0.4em 0 0.8em;
 font-weight: bold;
 }
 
-h1,h2,h3,h4,h5,h6{@include headings;}
+h1,h2,h3,h4,h5,h6{@include headings($text);}
 
 h1{font-size:3.2em;}
 h2{font-size:2.6em;}
 h3{font-size:2em;}
 
-a,a:link,a:visited{
-  text-decoration: underline;
-  text-shadow: none;
-  color:$yellow;
-}
-a:hover{
-  background: $yellow;
-  color:$blue;
-}
-
 .container{max-width:960px;width:$width;margin:0 auto;}
 
 //responsive layout
-
 @media screen and (max-width: 600px) {
   .container {
     width: auto;
@@ -250,25 +255,26 @@ header{
   }
   
   h2{
+    color: #fff;
     margin: 10px 0 0;
     text-align: center;
     font-size:1.8em;
     font-weight: normal;
-    letter-spacing:0.12em;
+    letter-spacing:0.26em;
   }
   }
 }
 
 #quote{
   background: $orange;
+  padding: 20px 120px;
   border-bottom: $thickness solid $border;
-  padding:20px;
-  blockquote{@include headings;font-size:2.6em;text-align:left;}
+  blockquote{@include headings($red);font-size:2.6em;text-align:left;}
   
   cite{
-      color:$white;
+      color:$red;
       padding:0;margin:0;
-      border-top: $white dashed 1px;
+      border-top: $red dashed 1px;
       font-style: italic;
       font-size:1.3em;
   } 
@@ -276,16 +282,26 @@ header{
 
 #main{
   .content{@extend .container;}
-  background:$grey;
+  background:$yellow;
   border-bottom: $thickness solid $border;
   padding:20px;
+  @include links($red,$brown);
   p{max-width:36em;text-shadow: 1px 1px 0 rgba($white,0.3);}
+  form{
+    label{
+      display:block;
+      color:$text;
+      font-size:1.4em;
+      font-weight: bold;
+    }
+  }
 }
 
 footer{
-  background:$blue;
+  background:$red;
   padding:20px;
   #contact{@extend .container;}
-  small{@extend .container;font-size:0.9em;display:block;}
+  small{@extend .container;font-size:0.85em;display:block;}
   p{color: $white;}
+  @include links($orange,$red);
 }
