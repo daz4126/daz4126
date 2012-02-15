@@ -140,6 +140,9 @@ doctype html
 html
   head
     meta charset="utf-8"
+    meta name="description" content="Made In Manchester by DAZ"
+    meta name="author" content="DAZ"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
     title= @title || settings.name || "Untitled"
     link rel="shortcut icon" href="/favicon.ico"
     - (settings.javascripts+@javascripts).uniq.each do |link|
