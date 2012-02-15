@@ -127,7 +127,7 @@ cite Noel Gallagher
 @@contact
 #contact
   h2 Contact Me
-  form action='contact' method='post'
+  form action='/' method='post'
     label for='message' Write me a short message below
     textarea rows='12' cols='40' name='message'
     input#send.button type='submit' value='Send'
@@ -318,7 +318,6 @@ header{
       font-size:1.4em;
       padding: 0.6em 0.5em;
       font-weight: bold;
-      margin-top: -5em;
     }
   }
 }
