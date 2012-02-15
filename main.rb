@@ -64,7 +64,7 @@ end
 post '/' do
     require 'pony'
     Pony.mail(
-      from: "DAZ4126",
+      from: "DAZ4126<message@daz4126.com>",
       to: 'daz4126@gmail.com',
       subject: "A message from the DAZ4126 website",
       body: params[:message],
