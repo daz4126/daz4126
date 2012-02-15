@@ -197,7 +197,7 @@ $width: 90%;
 // basic elements
 
 html{
-  background:$brown;
+  background:$brown url(brown.png) 20px 35px repeat;
 }
 
 body{
@@ -266,17 +266,25 @@ header{
 }
 
 #quote{
-  background: $orange;
-  padding: 20px 120px;
+  background: $grey;
+  padding: 20px 100px;
   border-bottom: $thickness solid $border;
-  blockquote{@include headings($red);font-size:2.6em;text-align:left;}
+  blockquote{
+    @include headings($black);
+    text-shadow: -1px -1px 0 rgba($white,0.3);
+    font-size:2.6em;
+    text-align:center;
+  }
   
   cite{
-      color:$red;
+      color:$black;
       padding:0;margin:0;
-      border-top: $red dashed 1px;
       font-style: italic;
       font-size:1.3em;
+      display: block;
+      text-align: center;
+      &:before{content:"★ ";}
+      &:after{content:" ★";}
   } 
 }
 
@@ -285,7 +293,7 @@ header{
   background:$yellow;
   border-bottom: $thickness solid $border;
   padding:20px;
-  @include links($red,$brown);
+  @include links($red,$yellow);
   p{max-width:36em;text-shadow: 1px 1px 0 rgba($white,0.3);}
   form{
     label{
