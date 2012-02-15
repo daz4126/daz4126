@@ -64,7 +64,7 @@ end
 post '/' do
     require 'pony'
     Pony.mail(
-      from: params[:name] + "<" + params[:email] + ">",
+      from: "DAZ4126.com",
       to: 'daz4126@gmail.com',
       subject: "A message from the DAZ4126 website",
       body: params[:message],
@@ -128,11 +128,7 @@ cite Noel Gallagher
 #contact
   h2 Contact Me
   form action='contact' method='post'
-    label for='name' Name:
-    input type='text' name='name'
-    label for='email' Email:
-    input type='text' name='email'
-    label for='message' Message:
+    label for='message' Write me a short message below
     textarea rows='12' cols='40' name='message'
     input#send.button type='submit' value='Send'
   h2 Tweet Me 
@@ -201,7 +197,8 @@ html{
 }
 
 body{
-  font-family:$normalfont;font-size:$basefontsize;
+  font-family:$normalfont;
+  font-size:$basefontsize;
   border: $thickness solid $border;
   width: 90%;
   max-width: 840px;
@@ -213,11 +210,11 @@ p,li{
 color:$text;
 font-size:1.4em;
 line-height:1.1;
-margin: 0.4em 0 0.8em;
+margin: 0.2em 0 0.8em;
 font-weight: bold;
 }
 
-h1,h2,h3,h4,h5,h6{@include headings($text);}
+h1,h2,h3,h4,h5,h6{@include headings($black);}
 
 h1{font-size:3.2em;}
 h2{font-size:2.6em;}
@@ -233,10 +230,8 @@ h3{font-size:2em;}
 }
 
 
-//sections
-
 header{
-    background: $red;
+    background: $header;
     border-bottom: $thickness solid $border;
     padding:20px;
   hgroup{
@@ -266,21 +261,22 @@ header{
 }
 
 #quote{
-  background: $grey;
+  background: $quote;
   padding: 20px 100px;
   border-bottom: $thickness solid $border;
   blockquote{
-    @include headings($black);
-    text-shadow: -1px -1px 0 rgba($white,0.3);
+    @include headings($quotetext);
+    line-height: 0.96;
     font-size:2.6em;
     text-align:center;
   }
   
   cite{
-      color:$black;
+      color:$quotetext;
       padding:0;margin:0;
       font-style: italic;
       font-size:1.3em;
+      font-weight: bold;
       display: block;
       text-align: center;
       &:before{content:"★ ";}
@@ -290,11 +286,11 @@ header{
 
 #main{
   .content{@extend .container;}
-  background:$yellow;
+  background:$main;
   border-bottom: $thickness solid $border;
   padding:20px;
-  @include links($red,$yellow);
-  p{max-width:36em;text-shadow: 1px 1px 0 rgba($white,0.3);}
+  @include links($black,$black,$yellow);
+  p{max-width:26em;text-shadow: 1px 1px 0 rgba($white,0.3);}
   form{
     label{
       display:block;
@@ -302,14 +298,33 @@ header{
       font-size:1.4em;
       font-weight: bold;
     }
+    textarea{
+      border: $thickness solid $black;
+      font-family:$normalfont;
+      background: transparent;
+      display: block;
+      padding: 10px;
+      &:focus{outline:none;}
+    }
+    #send{
+      font-family:$normalfont;
+      background: $yellow;
+      color: $black;
+      border: none;
+      color:$text;
+      font-size:1.4em;
+      padding: 0.6em 0.5em;
+      font-weight: bold;
+      margin-top: -5em;
+    }
   }
 }
 
 footer{
-  background:$red;
+  background:$footer;
   padding:20px;
   #contact{@extend .container;}
   small{@extend .container;font-size:0.85em;display:block;}
   p{color: $white;}
-  @include links($orange,$red);
+  @include links($yellow,$black);
 }

@@ -25,18 +25,18 @@
     font-family: $headingfont;
     text-transform: uppercase;
     letter-spacing:0.1em;
-    line-height:0.8;
+    line-height:1;
     margin: 0 0 0.2em;
 }
 
-@mixin links($color:white,$background:red){
+@mixin links($color:white,$hovercolor:red,$background:$color){
 a,a:link,a:visited{
   text-decoration: underline;
   text-shadow: none;
   color:$color;
     &:hover{
-      background: $color;
-      color:$red;
+      background: $background;
+      color:$hovercolor;
     }
   }
 }
