@@ -15,28 +15,8 @@ configure do
   set :fonts, %w[ Abel ]
 
   set :markdown, :layout_engine => :slim
-
-  set :flash, %w[notice error warning alert info]
-  enable :sessions
-  #use Rack::Flash
 end
 
-########### Helpers ###########
-helpers do
-def current?(path='') ; request.path_info=='/'+path ? 'current':  nil ; end
-
-# add your own helpers here ...
-end
-
-###########  Filters ###########
-before do
-  @javascripts = []
-  @fonts = []
-end
-
-after do
-  #after filters go here
-end
 
 ###########  Routes ###########
 not_found { slim :'404' }
@@ -56,14 +36,10 @@ get '/success' do
   slim :success
 end
 
-get '/:page' do
-  raise error(404) unless File.exists?(params[:page]+'.md')
-  markdown params[:page].to_sym
-end
-
 post '/' do
     require 'pony'
     Pony.mail(
+      from: "DAZ4126<daz4126@gmail.com>",
       to: 'daz4126@gmail.com',
       subject: "A message from the DAZ4126 website",
       body: params[:message],
@@ -79,6 +55,11 @@ post '/' do
         :domain               => 'heroku.com'
       })
     redirect '/success' 
+end
+
+get '/:page' do
+  raise error(404) unless File.exists?(params[:page]+'.md')
+  markdown params[:page].to_sym
 end
 
 __END__
@@ -116,7 +97,7 @@ blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We D
 cite Anthony H Wilson
 
 @@quote2
-blockquote rel="http://shop.visitmanchester.com/store/product/2265/Quote-magnet---dark-blue/" They return the love around here, don't they
+blockquote rel="http://shop.visitmanchester.com/store/product/2265/Quote-magnet---dark-blue/" They return the love around here, don't they?
 cite Guy Garvey
 
 @@quote3
@@ -144,11 +125,11 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
     title= @title || settings.name || "Untitled"
     link rel="shortcut icon" href="/favicon.ico"
-    - (settings.javascripts+@javascripts).uniq.each do |link|
+    - (@javascripts?settings.javascripts+@javascripts:settings.javascripts).uniq.each do |link|
       script src==link
     /[if lt IE 9]
       script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    link href="http://fonts.googleapis.com/css?family=#{(settings.fonts+@fonts).uniq.*'|'}" rel='stylesheet'
+    link href="http://fonts.googleapis.com/css?family=#{(@fonts?settings.fonts+@fonts:settings.fonts).uniq.*'|'}" rel='stylesheet'
     link rel="stylesheet" media="screen, projection" href="/styles.css"
   body
     header role="banner"
@@ -192,17 +173,14 @@ $basefontsize: 13px;
 $thickness:8px;
 $width: 90%;
 
-// basic elements
-
 html{
-  background:$brown url(brown.png) 20px 35px repeat;
+  background:#6C7360;
 }
 
 body{
   font-family:$normalfont;
   font-size:$basefontsize;
   border: $thickness solid $border;
-  width: 90%;
   max-width: 840px;
   margin: 10px auto;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.1),-5px 5px 5px rgba(0,0,0,0.1);
@@ -223,14 +201,6 @@ h2{font-size:2.6em;}
 h3{font-size:2em;}
 
 .container{max-width:960px;width:$width;margin:0 auto;}
-
-//responsive layout
-@media screen and (max-width: 600px) {
-  .container {
-    width: auto;
-  }
-}
-
 
 header{
     background: $header;
@@ -311,12 +281,13 @@ header{
     #send{
       font-family:$normalfont;
       background: $yellow;
+      border: $thickness solid $black;
       color: $black;
-      border: none;
       color:$text;
       font-size:1.4em;
-      padding: 0.6em 0.5em;
+      padding: 0.4em 0.3em;
       font-weight: bold;
+      text-transform: uppercase;
     }
   }
 }
@@ -328,4 +299,20 @@ footer{
   small{@extend .container;font-size:0.85em;display:block;}
   p{color: $white;}
   @include links($yellow,$black);
+}
+
+//responsive layout
+@media screen and (max-width: 840px) {
+  body{width:auto;margin:0;}
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: auto;
+  }
+  #quote{
+    padding:20px 2px;
+  }
+  form{width:100%;}
+  textarea{width:90%;}
 }
