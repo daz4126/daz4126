@@ -145,27 +145,4 @@ footer{
   @include links($yellow,$black);
 }
 
-//responsive layout
-@media screen and (max-width: 840px) {
-  body{width:auto;margin:0;}
-}
-
-@media screen and (max-width: 600px) {
-  #banner{
-    padding:20px 2px;
-  }
-  p,li,label{font-size:1em;}
-}
-
-
-// Landscape phones and down
-@media (max-width: 480px) {  }
-
-// Landscape phone to portrait tablet
-@media (max-width: 768px) {  }
-
-// Portrait tablet to landscape and desktop
-@media (min-width: 768px) and (max-width: 980px) {  }
-
-// Large desktop
-@media (min-width: 1200px) {  }
+@import "responsive";

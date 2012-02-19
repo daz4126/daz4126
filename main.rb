@@ -7,10 +7,8 @@ configure do
   set :name, ENV['name'] || 'DAZ4126'
   set :author, ENV['author'] || 'DAZ'
   set :analytics, ENV['ANALYTICS'] || 'UA-XXXXXXXX-X'
-
   set :javascripts, %w[ ]
   set :fonts, %w[ Abel ]
-
   set :markdown, :layout_engine => :slim
 end
 
@@ -24,7 +22,7 @@ get('/application.js') { coffee :script }
 # home page
 get '/' do
   @title = "DAZ, Made in Manchester"
-  @before = :quote
+  @banner = "quote#{(rand(3)+1)}"
   slim :index
 end
 
@@ -67,34 +65,6 @@ end
 __END__
 ########### Views ###########
 
-@@sidebar
-ul.sidebar
-  li
-    h1 Twitter
-    p
-      a.twitter title="Tweet Me" href="http://twitter.com/#!/daz4126" @daz4126
-  li
-    h1 Github
-  li
-    h1 Writing
-    p I write articles about Ruby and Sinatra for Rubysources:
-    ul
-      li An Interview with Konstantin Haase
-      li Ruby Heros
-      li Ruby Golf
-      li Rails or Sinatra? Best of Both Worlds
-  li
-    h1 websites
-    p I like to build websites. Here are some of them:
-    ul
-      li Cards in the Cloud
-      li Identity
-      li EU Energy Focus
-      li I Did It My Way
-  li
-    h1 Blog
-    p Coming Soon!
-
 @@index
 h1 title='Traditional Mancunian Greeting' Alright Mate!
 
@@ -114,10 +84,6 @@ p I love sport - swimming, basketball and especially water polo. I'm a geek at h
 @@work
 h2 Web Design
 p I built this website so that I could write about all that stuff and show off some of my work. I love to build websites that are simple, yet brilliant at the same time. I am a big believer in Open Source. I write about Sinatra web development at <a href='http://rubysource.com'>Ruby Source</a> and <a href='http://ididitmyway.heroku.com'>I Did It My Way</a>.
-
-@@quote
-#banner
-  == slim ('quote'+(rand(3)+1).to_s).to_sym
 
 @@quote1
 blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We Do Things Differently Here

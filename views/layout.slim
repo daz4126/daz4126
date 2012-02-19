@@ -19,12 +19,13 @@ html
         h1
           a title="Home Sweet Home" href="/" = settings.name
         h2 Made in Manchester
-    == slim @before.to_sym if @before
+    -if @banner
+      #banner 
+        == slim @banner.to_sym
     #main role='main'
       .content
         == yield
       == slim @sidebar || :sidebar
-    == slim @after.to_sym if @after
     footer role="contentinfo"
       small 
         p &copy; Copyleft #{settings.author} #{Time.now.year==2011 ? '2011': '2011-'+Time.now.year.to_s}
