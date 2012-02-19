@@ -95,13 +95,13 @@ header{
     li{
       margin:0 20px 0 0;
       padding: 4px 0;
-      font-size:1em;
+      font-size:1.1em;
       border-top:solid $black $thickness/2;
-      ul{@include zero;}
-      li{border:0;list-style:square inside;}
+      ul{margin:0;padding: 0 1.1em;}
+      li{border:0;list-style:square;}
     }
     h1{font-size:2.6em;color:$black;}
-    p{font-size: 1em;}
+    p{font-size: 1.1em;}
     }
   p{
       max-width:26em;
