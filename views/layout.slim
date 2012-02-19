@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta name="description" content="Made In Manchester by DAZ"
+    meta name="author" content="DAZ"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    title= @title || settings.name || "Untitled"
+    link rel="shortcut icon" href="/favicon.ico"
+    - (@javascripts?settings.javascripts+@javascripts:settings.javascripts).uniq.each do |link|
+      script src==link
+    /[if lt IE 9]
+      script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
+    link href="http://fonts.googleapis.com/css?family=#{(@fonts?settings.fonts+@fonts:settings.fonts).uniq.*'|'}" rel='stylesheet'
+    link rel="stylesheet" media="screen, projection" href="/styles.css"
+  body
+    header role="banner"
+      hgroup
+        h1
+          a title="Home Sweet Home" href="/" = settings.name
+        h2 Made in Manchester
+    == slim @before.to_sym if @before
+    #main role='main'
+      .content
+        == yield
+      == slim @sidebar || :sidebar
+    == slim @after.to_sym if @after
+    footer role="contentinfo"
+      small 
+        p &copy; Copyleft #{settings.author} #{Time.now.year==2011 ? '2011': '2011-'+Time.now.year.to_s}
+        p This site has been built using <a href="http://xubuntu.org">Xubuntu</a>, <a href="http://ruby-lang.org/en/">Ruby</a>, <a href="http://sinatrarb.com">Sinatra</a> &amp; <a href="http://inkscape.org/">Inkscape</a>. Hosting is provided by <a href="http://heroku.com">Heroku</a>.
+      javascript:
+        var _gaq=[["_setAccount","#{ settings.analytics }"],["_trackPageview"]];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=g.src="//www.google-analytics.com/ga.js";s.parentNode.insertBefore(g,s)}(document,"script"))
