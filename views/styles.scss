@@ -82,7 +82,7 @@ header{
 
 #main{
   @include clearfix;
-  padding: 20px 0 20px 5%;
+  padding: 20px 5%;
   background:$main;
   border-bottom: $thickness solid $border;
   @include links($black,$black,$yellow);
