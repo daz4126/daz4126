@@ -75,8 +75,8 @@ header{
       font-weight: bold;
       display: block;
       text-align: center;
-      &:before{content:"* ";}
-      &:after{content:" *";}
+      &:before{content:"\2605\a0";}
+      &:after{content:"\a0\2605";}
   } 
 }
 
@@ -116,6 +116,7 @@ header{
     }
     textarea{
       width:90%;
+      box-sizing:border-box;
       border: $thickness/2 solid $black;
       font-family:$normalfont;
       background: transparent;
