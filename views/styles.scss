@@ -75,8 +75,9 @@ header{
       font-weight: bold;
       display: block;
       text-align: center;
-      &:before{content:"\2605\a0";}
-      &:after{content:"\a0\2605";}
+      &:before{content:"\2605";padding-right:5px;font-style: normal;font-family: "Arial Unicode MS", Quivira, Symbola, Code2000, STIX,
+  "Linux Libertine", MingLiU, "DFKai-SB";}
+      &:after{content:"\2605";padding-left:5px;font-style: normal;}
   } 
 }
 
@@ -121,6 +122,7 @@ header{
       font-family:$normalfont;
       background: transparent;
       display: block;
+      margin:8px auto;
       padding: 10px;
       &:focus{outline:none;}
     }
