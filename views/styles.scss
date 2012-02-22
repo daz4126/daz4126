@@ -3,7 +3,7 @@
 @import "mixins";
 
 html{
-  background:$html;
+  background:$html url(texture.png) -24px 13px repeat;
 }
 
 body{
