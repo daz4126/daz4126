@@ -23,8 +23,8 @@ margin: 0.2em 0 0.8em;
 
 h1,h2,h3,h4,h5,h6{@include headings($black);}
 
-h1{font-size:3.2em;}
-h2{font-size:2.6em;}
+h1{font-size:2.6em;}
+h2{font-size:2.2em;}
 h3{font-size:2em;}
 
 header{
@@ -63,7 +63,7 @@ header{
   blockquote{
     @include headings($quotetext);
     line-height: 0.96;
-    font-size:2.6em;
+    font-size:2.0em;
     text-align:center;
   }
   
@@ -71,7 +71,7 @@ header{
       color:$quotetext;
       padding:0;margin:0;
       font-style: italic;
-      font-size:1.3em;
+      font-size:1em;
       font-weight: bold;
       display: block;
       text-align: center;
@@ -96,12 +96,12 @@ header{
     li{
       margin:0 20px 0 0;
       padding: 4px 0;
-      font-size:1.1em;
+      font-size:1em;
       border-top:solid $black $thickness/2;
       ul{margin:0;padding: 0 1.1em;}
       li{border:0;list-style:square;}
     }
-    h1{font-size:2.6em;color:$black;}
+    h1{font-size:2.2em;color:$black;}
     p{font-size: 1.1em;}
     }
   p{
@@ -123,18 +123,18 @@ header{
       background: transparent;
       display: block;
       padding: 10px;
-      &:focus{outline:none;}
+      &:focus{outline:none;border-color:$yellow;}
     }
     #send{
       font-family:$normalfont;
-      background: $yellow;
+      background: $black;
       border: $thickness/2 solid $black;
-      color: $black;
-      color:$text;
+      color: $white;
       font-size:1.4em;
       padding: 0.4em 0.3em;
       font-weight: bold;
       text-transform: uppercase;
+      &:hover{background:$yellow;color:$black;}
     }
   }
 }
