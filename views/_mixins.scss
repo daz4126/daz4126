@@ -39,7 +39,7 @@
     margin: 0 0 0.2em;
 }
 
-@mixin links($color:white,$hovercolor:red,$background:$color){
+@mixin links($color:$text,$hovercolor:$yellow,$background:$color){
 a,a:link,a:visited{
   text-decoration: underline;
   text-shadow: none;

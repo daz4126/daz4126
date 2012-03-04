@@ -83,7 +83,7 @@ header{
 
 #main{
   @include clearfix;
-  padding: 20px 5%;
+  padding: 20px;
   background:$main;
   border-bottom: $thickness solid $border;
   @include links($black,$black,$yellow);
@@ -105,8 +105,7 @@ header{
     p{font-size: 1.1em;}
     }
   p{
-      max-width:26em;
-      text-shadow: 1px 1px 0 rgba($white,0.3);
+      text-shadow: 1px 1px 0 rgba($white,0.2);
   }
   form{
     width:100%;
@@ -122,7 +121,8 @@ header{
       font-family:$normalfont;
       background: transparent;
       display: block;
-      padding: 10px;
+      padding: 4px;
+      overflow: auto;
       &:focus{outline:none;border-color:$yellow;}
     }
     #send{

@@ -4,19 +4,43 @@ Bundler.require
 
 ########### configuration & settings ###########
 configure do
-  set :name, ENV['name'] || 'DAZ4126'
-  set :author, ENV['author'] || 'DAZ'
+  set :name, ENV['NAME'] || 'DAZ4126'
+  set :author, ENV['AUTHOR'] || 'DAZ'
   set :analytics, ENV['ANALYTICS'] || 'UA-XXXXXXXX-X'
-  set :javascripts, %w[ ]
+  set :javascripts, %w[ http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js ]
+  set :styles, %w[ main ]
   set :fonts, %w[ Abel ]
   set :markdown, :layout_engine => :slim
+end
+
+helpers do
+  def javascripts
+    javascripts = ""
+    (@javascripts?settings.javascripts+@javascripts:settings.javascripts).uniq.each do |script|
+      javascripts << "<script src=\"#{script}\"></script>"
+    end
+    javascripts
+  end
+
+  def styles
+    styles = ""
+    (@styles?settings.styles+@styles:settings.styles).uniq.each do |style|
+      styles << "<link href=\"/#{style}.css\" media=\"screen, projection\" rel=\"stylesheet\" />"
+    end
+    styles
+  end
+
+  def webfonts
+    "<link href=\"http://fonts.googleapis.com/css?family=#{(@fonts?settings.fonts+@fonts:settings.fonts).uniq.*'|'}\" rel=\"stylesheet\" />"
+  end
+  
 end
 
 
 ###########  Routes ###########
 not_found { slim :'404' }
 error { slim :'500' }
-get('/styles.css'){ scss :styles }
+get('/main.css'){ scss :styles }
 get('/application.js') { coffee :script }
 
 # home page
@@ -34,7 +58,7 @@ end
 post '/' do
     require 'pony'
     Pony.mail(
-      from: "DAZ4126<daz4126@gmail.com>",
+      from: params[:name] + "<" + params[:email] + ">",
       to: 'daz4126@gmail.com',
       subject: "A message from the DAZ4126 website",
       body: params[:message],
@@ -67,15 +91,9 @@ __END__
 
 @@index
 h1 title='Traditional Mancunian Greeting' Alright Mate!
-
-p  Welcome to my website! My name is DAZ and I work, rest and play in Manchester,UK.
-
-p I enjoy building websites that are simple, but brilliant.
-
-p I also like water polo, maths and burgers.
-
+p  Welcome to my website! 
+P My name is DAZ and I work, rest and play in Manchester,UK. I build websites, play water polo and eat burgers.
 p Thanks for visiting. Have a nice day!
-
 == slim :contact
 
 @@about
@@ -101,6 +119,10 @@ cite Noel Gallagher
 #contact
   h2 Contact Me
   form action='/' method='post'
+    label for='name' Name:
+    input type='text' name='name'
+    label for='email' Email:
+    input type='text' name='email'
     label for='message' Write me a short message below
     textarea rows='12' cols='40' name='message'
     input#send.button type='submit' value='Send'
@@ -111,7 +133,7 @@ p That page is missing
 
 @@500
 h1 500 Error! 
-p Something has gone wrong!
+p Oops, something has gone terribly wrong!
 
 @@script
 alert 'Coffeescript is working!'

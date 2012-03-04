@@ -7,12 +7,12 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
     title= @title || settings.name || "Untitled"
     link rel="shortcut icon" href="/favicon.ico"
-    - (@javascripts?settings.javascripts+@javascripts:settings.javascripts).uniq.each do |link|
-      script src==link
+
     /[if lt IE 9]
       script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    link href="http://fonts.googleapis.com/css?family=#{(@fonts?settings.fonts+@fonts:settings.fonts).uniq.*'|'}" rel='stylesheet'
-    link rel="stylesheet" media="screen, projection" href="/styles.css"
+    == webfonts
+    == javascripts
+    == styles
   body
     header role="banner"
       hgroup

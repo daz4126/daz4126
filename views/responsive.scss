@@ -1,19 +1,19 @@
 // Landscape phones and down
 @media screen and (max-width: 480px) {
   #main{
-    .content,.sidebar{width:100%;float:none;}
-    h1{font-size:2.6em;}
-    h2{font-size:2em;}
+    .content,.sidebar{width:auto;float:none;}
+    .sidebar,#contact{margin-top: 20px;}
+    h1{font-size:2.2em;}
+    h2{font-size:1.8em;}
     p,li{font-size:1.1em;}
     form label{font-size:1.1em;}
     form textarea{width:90%;}
   }
   #banner{
-    padding:20px 2px;
-    blockquote{font-size: 2em;}
+    padding:10px 2px;
+    blockquote{font-size: 1.6em;}
     cite{font-size: 1.1em;}
   }
-  .sidebar,#contact{margin-top: 40px;}
 }
 
 // Landscape phone to portrait tablet
