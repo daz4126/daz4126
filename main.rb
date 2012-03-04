@@ -7,7 +7,7 @@ configure do
   set :name, ENV['NAME'] || 'DAZ4126'
   set :author, ENV['AUTHOR'] || 'DAZ'
   set :analytics, ENV['ANALYTICS'] || 'UA-XXXXXXXX-X'
-  set :javascripts, %w[ http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js ]
+  set :javascripts, %w[ ]
   set :styles, %w[ main ]
   set :fonts, %w[ Abel ]
   set :markdown, :layout_engine => :slim
@@ -58,7 +58,7 @@ end
 post '/' do
     require 'pony'
     Pony.mail(
-      from: params[:name] + "<" + params[:email] + ">",
+      from: "DAZ4126<daz4126@gmail.com>",
       to: 'daz4126@gmail.com',
       subject: "A message from the DAZ4126 website",
       body: params[:message],
@@ -96,13 +96,6 @@ P My name is DAZ and I work, rest and play in Manchester,UK. I build websites, p
 p Thanks for visiting. Have a nice day!
 == slim :contact
 
-@@about
-p I love sport - swimming, basketball and especially water polo. I'm a geek at heart and love Maths, programming and web stuff.
-
-@@work
-h2 Web Design
-p I built this website so that I could write about all that stuff and show off some of my work. I love to build websites that are simple, yet brilliant at the same time. I am a big believer in Open Source. I write about Sinatra web development at <a href='http://rubysource.com'>Ruby Source</a> and <a href='http://ididitmyway.heroku.com'>I Did It My Way</a>.
-
 @@quote1
 blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We Do Things Differently Here
 cite Anthony H Wilson
@@ -119,10 +112,6 @@ cite Noel Gallagher
 #contact
   h2 Contact Me
   form action='/' method='post'
-    label for='name' Name:
-    input type='text' name='name'
-    label for='email' Email:
-    input type='text' name='email'
     label for='message' Write me a short message below
     textarea rows='12' cols='40' name='message'
     input#send.button type='submit' value='Send'
