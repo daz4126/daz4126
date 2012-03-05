@@ -16,7 +16,7 @@ end
 helpers do
   def javascripts
     javascripts = ""
-    (@javascripts?settings.javascripts+@javascripts:settings.javascripts).uniq.each do |script|
+    (@javascripts?([@javascripts].flatten+settings.javascripts):settings.javascripts).uniq.each do |script|
       javascripts << "<script src=\"#{script}\"></script>"
     end
     javascripts
@@ -24,7 +24,7 @@ helpers do
 
   def styles
     styles = ""
-    (@styles?settings.styles+@styles:settings.styles).uniq.each do |style|
+    (@styles?([@styles].flatten+settings.styles):settings.styles).uniq.each do |style|
       styles << "<link href=\"/#{style}.css\" media=\"screen, projection\" rel=\"stylesheet\" />"
     end
     styles
@@ -36,7 +36,6 @@ helpers do
   
 end
 
-
 ###########  Routes ###########
 not_found { slim :'404' }
 error { slim :'500' }
@@ -47,6 +46,7 @@ get('/application.js') { coffee :script }
 get '/' do
   @title = "DAZ, Made in Manchester"
   @banner = "quote#{(rand(3)+1)}"
+  @styles = :custom
   slim :index
 end
 
@@ -115,6 +115,9 @@ cite Noel Gallagher
     label for='message' Write me a short message below
     textarea rows='12' cols='40' name='message'
     input#send.button type='submit' value='Send'
+
+@@success
+p Thanks for the message. If you included some contact details, I'll be in touch soon.
 
 @@404
 h1 404! 

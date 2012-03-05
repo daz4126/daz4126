@@ -15,6 +15,11 @@ body{
   box-shadow: 5px 5px 5px rgba(0,0,0,0.16),-5px 5px 5px rgba(0,0,0,0.16);
 }
 
+::selection{
+  background: $brightyellow;
+  color: $black;
+}
+
 p,li{
 @include text;
 line-height:1.1;
