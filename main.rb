@@ -46,7 +46,6 @@ get('/application.js') { coffee :script }
 get '/' do
   @title = "DAZ, Made in Manchester"
   @banner = "quote#{(rand(3)+1)}"
-  @styles = :custom
   slim :index
 end
 
