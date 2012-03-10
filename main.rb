@@ -11,6 +11,7 @@ configure do
   set :styles, %w[ main ]
   set :fonts, %w[ Abel ]
   set :markdown, :layout_engine => :slim
+  disable :protection
 end
 
 helpers do
