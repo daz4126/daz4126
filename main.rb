@@ -92,7 +92,7 @@ __END__
 @@index
 h1 title='Traditional Mancunian Greeting' Alright Mate!
 p  Welcome to my website! 
-P My name is DAZ and I work, rest and play in Manchester,UK. I build websites, play water polo and eat vegeburgers.
+P My name is DAZ and I work, rest and play in Manchester,UK. I build websites, play water polo and eat veggie burgers.
 p Thanks for visiting. Have a nice day!
 == slim :contact
 

@@ -152,4 +152,12 @@ footer{
   @include links($yellow,$black);
 }
 
+#badge{
+  display: block;
+  height: 105px;
+  width: 105px;
+  background: url(http://cdn.sitepoint.com/author-badges/badges/black/105.png) no-repeat center;
+  text-indent: 100%;
+}
+
 @import "responsive";
