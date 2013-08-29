@@ -1,6 +1,11 @@
 ########### DAZ4126 website ###########
-require 'bundler'
-Bundler.require
+require "sinatra"
+require "slim"
+require "sass"
+require "redcarpet"
+require "pony"
+require "thin"
+require 'sinatra/reloader' if development?
 
 ########### configuration & settings ###########
 configure do
@@ -33,6 +38,13 @@ helpers do
 
   def webfonts
     "<link href=\"http://fonts.googleapis.com/css?family=#{(@fonts?settings.fonts+@fonts:settings.fonts).uniq.*'|'}\" rel=\"stylesheet\" />"
+  end
+  
+  def section(name)
+    begin
+      slim :section, locals: {name: name}
+    rescue
+    end
   end
   
 end
@@ -88,14 +100,62 @@ end
 
 __END__
 ########### Views ###########
-
+@@section
+section
+  == slim name
+  
 @@index
-h1 title='Traditional Mancunian Greeting' Alright Mate!
-p  Welcome to my website! 
-P My name is DAZ and I work, rest and play in Manchester,UK. I build websites, play water polo and eat veggie burgers.
-p Thanks for visiting. Have a nice day!
-== slim :contact
+== section :about
+== section :contact
+== section :twitter
+== section :websites
+== section :writing
+== section :github
 
+
+
+  
+@@about
+markdown:
+  Alright Mate!
+  ==============
+  
+  Hello from #{rand(10)}
+  
+  Welcome to my website!
+
+  My name is DAZ and I work, rest and play in Manchester,UK. I build websites, play water polo and eat veggie burgers.
+
+  Thanks for visiting. Have a nice day!
+  
+@@twitter
+h1 Twitter
+p Follow me or tweet me <a title="Tweet Me" href="http://twitter.com/#!/daz4126">@daz4126</a>
+
+@@websites
+h1 websites
+p I like to build websites. Here are some of them:
+ul
+  li <a href="http://cardsinthecloud.com/">Cards in the Cloud</a>
+  li <a href="http://euenergyfocus.co.uk/">EU Energy Focus</a>
+  li <a href="http://ididitmyway.heroku.com/">I Did It My Way</a>
+  li <a href="http://identity-manchester.heroku.com/">Identity Manchester</a>
+
+@@writing
+markdown:
+  #Writing
+  
+  I write articles about Ruby and Sinatra for Rubysource:
+  
+    * [Fiddling Around With Sinatra part 2](http://rubysource.com/fiddling_around_with_sinatra_ii/)
+    *  [Fiddling Around With Sinatra part 1](http://rubysource.com/fiddling-around-with-sinatra/)
+    *  [Using Sinatra Helpers to Clean Up Your Code](http://rubysource.com/using-sinatra-helpers-to-clean-up-your-code/)
+    *  [Sinatra Up and Running: A Book Review](http://rubysource.com/sinatra-up-and-running-a-book-review/")
+
+@@github
+h1 Github
+p I love programming and developing web apps. All my stuff is saved on <a href="https://github.com/daz4126">Github</a>.
+  
 @@quote1
 blockquote rel="http://www.flickr.com/photos/nativephotography/4343566244/" We Do Things Differently Here
 cite Anthony H Wilson

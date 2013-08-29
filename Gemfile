@@ -1,9 +1,7 @@
-source :rubygems
+source 'https://rubygems.org'
 gem "sinatra"
 gem "slim"
 gem "sass"
 gem "redcarpet"
-gem "coffee-script"
-gem "therubyracer"
 gem "pony"
 gem "thin"
