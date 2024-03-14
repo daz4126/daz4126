@@ -6,7 +6,7 @@
 
 ⭐ I can also code in Ruby,Haskell and Python 🐍
 
-⭐ I have built apps in React, Vue, Svelte, Express and Ruby on Rails
+⭐ I've built apps in React, Vue, Svelte, Express and Ruby on Rails
 
 ⭐ I made [Nanny State](https://github.com/daz4126/Nanny-State) - a teeny tiny alternative to React
 
@@ -16,8 +16,12 @@
 
 ⭐ I can also write HTML and CSS
 
-⭐ I've written [lots of articles for SitePoint](https://www.sitepoint.com/author/djones/)
+⭐ I made CSS framework that's a teeny tiny alternative to Bootstrap
 
-⭐ ... and a [few for Scrimba](https://scrimba.com/articles/author/darren/)
+🖊 I've written [lots of articles for SitePoint](https://www.sitepoint.com/author/djones/)
+
+🖊 ... and a [few for Scrimba](https://scrimba.com/articles/author/darren/)
 
 I'm currently available to work on projects.
+
+More info on my [LinkedIn page](https://www.linkedin.com/in/daz4126/)
