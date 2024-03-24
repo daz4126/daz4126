@@ -1,4 +1,4 @@
-# 👋 Hi! I'm DAZ
+# 👋 Hey! I'm DAZ
 
 ⭐ I'm a full stack web developer who 💜 loves JavaScript 💚
 
