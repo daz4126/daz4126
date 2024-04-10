@@ -1,12 +1,14 @@
 # 👋 Hey! I'm DAZ
 
-⭐ I'm a full stack web developer who 💜 loves JavaScript 💚
+⭐ I'm a full stack web developer who 💜 loves JavaScript & Ruby 💚
 
 📘(I even wrote a [couple of books](https://www.amazon.co.uk/JavaScript-Novice-Ninja-Darren-Jones-ebook/dp/B0C1556VYB/) [about JavaScript](https://www.amazon.co.uk/Learn-Code-JavaScript-Darren-Jones/dp/1925836401))
 
-⭐ I can also code in Ruby,Haskell and Python 🐍
+⭐ I can also code in TypeScript,Haskell and Python 🐍
 
-⭐ I've built apps in React, Vue, Svelte, Express and Ruby on Rails
+⭐ I specialise in building full stack apps in Ruby on Rails
+
+⭐ I've also built apps in React, Vue, Svelte, Express and Next.js
 
 ⭐ I made [Nanny State](https://github.com/daz4126/Nanny-State) - a teeny tiny alternative to React
 
