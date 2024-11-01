@@ -1,10 +1,10 @@
 # 👋 Hey! I'm DAZ
 
-⭐ I'm a web developer who 💜s Ruby & JavaScript
+⭐ I'm a software developer who 💜s Ruby & JavaScript
 
 📘(I even wrote a [couple of books](https://www.amazon.co.uk/JavaScript-Novice-Ninja-Darren-Jones-ebook/dp/B0C1556VYB/) [about JavaScript](https://www.amazon.co.uk/Learn-Code-JavaScript-Darren-Jones/dp/1925836401))
 
-⭐ I can also code in TypeScript,Haskell and Python 🐍
+⭐ I can also code in Elixr,Haskell and Python 🐍
 
 ⭐ I specialise in building full stack apps in Ruby on Rails
 
