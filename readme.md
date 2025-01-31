@@ -24,6 +24,4 @@
 
 🖊 ... and a [few for Scrimba](https://scrimba.com/articles/author/darren/)
 
-I'm currently available to work on projects.
-
 More info on my [LinkedIn page](https://www.linkedin.com/in/daz4126/) and at [daz4126.dev](https://daz4126.dev)
