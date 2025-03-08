@@ -2,7 +2,7 @@
 
 ⭐ I'm a software engineer at Yozu
 
-⭐ I 💜 coding, mainly in Ruby & JavaScript
+⭐ I 💜 coding in Ruby & JavaScript
 
 📘(I even wrote a [couple of books](https://www.amazon.co.uk/JavaScript-Novice-Ninja-Darren-Jones-ebook/dp/B0C1556VYB/) [about JavaScript](https://www.amazon.co.uk/Learn-Code-JavaScript-Darren-Jones/dp/1925836401))
 ⭐ I wrote [Ruby Dooby Doo](https://github.com/daz4126/rubydoobydoo) to make JS more Ruby
