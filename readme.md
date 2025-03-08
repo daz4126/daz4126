@@ -24,8 +24,8 @@
 
 ⭐ I wrote a CSS framework called [Dragon](https://github.com/da4126/dragon) 🐲 that's a teeny tiny alternative to Bootstrap and Tailwind
 
-🖊 I've written [lots of articles for SitePoint](https://www.sitepoint.com/author/djones/)
+📝 I've written [lots of articles for SitePoint](https://www.sitepoint.com/author/djones/)
 
-🖊 ... and a [few for Scrimba](https://scrimba.com/articles/author/darren/)
+📝 ... and a [few for Scrimba](https://scrimba.com/articles/author/darren/)
 
 More info on my [LinkedIn page](https://www.linkedin.com/in/daz4126/) and at [daz4126.dev](https://daz4126.dev)
