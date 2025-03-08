@@ -1,6 +1,7 @@
 # 👋 Hey! I'm DAZ
 
 ⭐ I'm a software engineer at Yozu
+
 ⭐ I 💜 coding, mainly in Ruby & JavaScript
 
 📘(I even wrote a [couple of books](https://www.amazon.co.uk/JavaScript-Novice-Ninja-Darren-Jones-ebook/dp/B0C1556VYB/) [about JavaScript](https://www.amazon.co.uk/Learn-Code-JavaScript-Darren-Jones/dp/1925836401))
