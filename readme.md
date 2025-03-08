@@ -1,4 +1,5 @@
 # 👋 Hey! I'm DAZ
+![1718330188415](https://github.com/user-attachments/assets/57df9394-8984-46aa-bf0e-0a09ef20e915)
 
 ⭐ I'm a software engineer at Yozu
 
