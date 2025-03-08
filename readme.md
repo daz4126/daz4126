@@ -18,10 +18,11 @@
 
 ⭐ I made [Nanny State](https://github.com/daz4126/Nanny-State) - a teeny tiny alternative to React
 
-⭐ I also made [⚡️Surge⚡️](https://github.com/daz4126/surge) - a micro framework for adding reactivity to your HTML
- 🥦 I made the [Fruit & Veg Cipher](https://fruit-and-veg-cipher.onrender.com) Game
+⭐ I also created [⚡️Surge⚡️](https://github.com/daz4126/surge) - a micro framework for adding reactivity to your HTML
+ 
+⭐ I developed the 🍏 [Fruit & Veg Cipher](https://fruit-and-veg-cipher.onrender.com) 🥦  Game
 
-⭐ I made a CSS framework called [Dragon](https://github.com/da4126/dragon) 🐲 that's a teeny tiny alternative to Bootstrap and Tailwind
+⭐ I wrote a CSS framework called [Dragon](https://github.com/da4126/dragon) 🐲 that's a teeny tiny alternative to Bootstrap and Tailwind
 
 🖊 I've written [lots of articles for SitePoint](https://www.sitepoint.com/author/djones/)
 
