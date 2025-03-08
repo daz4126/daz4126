@@ -9,9 +9,9 @@
 
 ⭐ I wrote [Ruby Dooby Doo](https://github.com/daz4126/rubydoobydoo) to make JS more Ruby
 
-⭐ I also enjoy coding in Elixr,Haskell and Python 🐍
+⭐ I also enjoy coding in Elixr & Haskell
 
-🛤️ I use Rails to build apps and love using Hotwire
+🛤️ I use Rails to build apps & love using Hotwire
 
 ⭐ I wrote a Ruby Gem that [adds registration pages to the Rails Authentication Generator](https://github.com/daz4126/authentication_with_registration_generator)
 
